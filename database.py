@@ -10,9 +10,6 @@ def get_database_engine():
     db_password = os.getenv('DB_PASSWORD')
     db_name = os.getenv('DB_NAME')
 
-    if None in (db_host, db_port, db_user, db_password, db_name):
-        raise ValueError("Database environment variables are not set")
-
     # Database connection parameters
     charset = "utf8mb4"
     timeout = 10
@@ -21,7 +18,7 @@ def get_database_engine():
     engine_url = f"mysql+pymysql://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}"
     engine = create_engine(engine_url,
                            connect_args={'connect_timeout': timeout, 'charset': charset},
-                           pool_recycle=3600)  # Adjust pool_recycle based on your needs
+                           pool_recycle=3600)
 
     return engine
 def load_jobs_from_db():
