@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <title>{{job.title}} - Jovian Careers</title>
     {% include 'bootstrap.html' %}
-    {% include 'nav.html' %}
 </head>
 <body>
+    {% include 'nav.html' %}
     {% include 'banner.html' %}
     <div class="container">
     <h1 class="text-center"> Jovian Careers</h1>
@@ -28,6 +28,7 @@
         <p>{{job.requirements}}</p>
         <h4>Salary</h4>
         <p>{{job.salary}}</p>
+        {% include 'application_form.html' %}
     </div>
     {% include 'footer.html' %}
 </body>
