@@ -32,6 +32,23 @@ def load_jobs_from_db():
             jobs.append(row._mapping)
         return jobs
 
+def load_job_from_db(id):
+
+    engine = get_database_engine()
+
+    with engine.connect() as conn:
+        result = conn.execute(
+            text("SELECT * FROM jobs WHERE id = :val"),
+            {'val': id}
+        )
+
+        rows = result.mappings().all()
+
+        if not rows:
+            return None
+
+        row_dict = dict(rows[0])
+        return row_dict
 
 
 
